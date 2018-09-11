@@ -294,7 +294,7 @@ public class KitchenSinkController {
                 break;
             }
             case "/settings": {
-                String imageUrl = createUri("/static/buttons/logo.png");
+                String imageUrl = createUri("/static/buttons/logo1040.jpg");
                 ButtonsTemplate buttonsTemplate = new ButtonsTemplate(
                         imageUrl,
                         "設定",
