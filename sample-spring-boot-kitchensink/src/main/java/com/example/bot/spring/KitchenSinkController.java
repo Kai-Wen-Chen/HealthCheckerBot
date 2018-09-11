@@ -270,7 +270,7 @@ public class KitchenSinkController {
                 }
                 break;
             }
-			case "bye": {
+            case "bye": {
                 Source source = event.getSource();
                 if (source instanceof GroupSource) {
                     this.replyText(replyToken, "Leaving group");
