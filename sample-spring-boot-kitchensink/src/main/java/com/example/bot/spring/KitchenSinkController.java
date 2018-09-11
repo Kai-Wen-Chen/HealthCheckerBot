@@ -305,18 +305,12 @@ public class KitchenSinkController {
                         "設定",
                         "",
                         Arrays.asList(
-                                /*new URIAction("Go to line.me",
-                                              "https://line.me"),
-                                new PostbackAction("Say hello1",
-                                                   "hello こんにちは"),
-                                new PostbackAction("言 hello2",
-                                                   "hello こんにちは",
-                                                   "hello こんにちは"),
-                                new MessageAction("Say message",
-                                                  "Rice=米")*/
-                        		new MessageAction("語言", "語言"),
-                        		new MessageAction("運動習慣", "運動習慣"),
-                        		new MessageAction("運動目標", "運動目標")
+                                new MessageAction("語言",
+                                              "語言"),
+                                new MessageAction("運動習慣",
+                                                   "運動習慣"),
+                                new MessageAction("運動目標",
+                                                  "運動目標")
                         ));
                 TemplateMessage templateMessage = new TemplateMessage("Button alt text", buttonsTemplate);
                 this.reply(replyToken, templateMessage);
