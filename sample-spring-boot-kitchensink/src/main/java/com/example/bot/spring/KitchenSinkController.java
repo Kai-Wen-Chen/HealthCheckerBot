@@ -293,12 +293,12 @@ public class KitchenSinkController {
                 this.reply(replyToken, templateMessage);
                 break;
             }
-            case "/setting": {
+            case "/settings": {
                 String imageUrl = createUri("/static/buttons/1040.jpg");
                 ButtonsTemplate buttonsTemplate = new ButtonsTemplate(
                         imageUrl,
                         "設定",
-                        "",
+                        "settings",
                         Arrays.asList(
                                 new MessageAction("語言",
                                               "語言"),
