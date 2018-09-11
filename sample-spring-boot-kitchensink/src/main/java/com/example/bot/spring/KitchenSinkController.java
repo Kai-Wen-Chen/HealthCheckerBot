@@ -87,9 +87,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @LineMessageHandler
 public class KitchenSinkController {
-	
-	boolean lan = true;
-	
     @Autowired
     private LineMessagingClient lineMessagingClient;
 
@@ -273,7 +270,6 @@ public class KitchenSinkController {
                 }
                 break;
             }
-            /*
 			case "bye": {
                 Source source = event.getSource();
                 if (source instanceof GroupSource) {
@@ -287,7 +283,6 @@ public class KitchenSinkController {
                 }
                 break;
             }
-			*/
             case "confirm": {
                 ConfirmTemplate confirmTemplate = new ConfirmTemplate(
                         "Do it?",
