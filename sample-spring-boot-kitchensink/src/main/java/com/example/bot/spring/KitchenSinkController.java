@@ -87,6 +87,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @LineMessageHandler
 public class KitchenSinkController {
+	String[] chinese = ["語言", "運動習慣", "運動目標"];
+	String[] english = ["Language", "Habit of Exercise", "Goal of Exercise"];
+	ArrayList<String[]> language = new ArrayList<String[]>();
+	language.add(chinese);
+	language.add(english);
+	boolean lan = true;
+	
     @Autowired
     private LineMessagingClient lineMessagingClient;
 
@@ -245,7 +252,7 @@ public class KitchenSinkController {
 
         log.info("Got text message from {}: {}", replyToken, text);
         switch (text) {
-            case "profile": {
+            case "/home": {
                 String userId = event.getSource().getUserId();
                 if (userId != null) {
                     lineMessagingClient
@@ -270,7 +277,8 @@ public class KitchenSinkController {
                 }
                 break;
             }
-            case "bye": {
+            /*
+			case "bye": {
                 Source source = event.getSource();
                 if (source instanceof GroupSource) {
                     this.replyText(replyToken, "Leaving group");
@@ -283,6 +291,7 @@ public class KitchenSinkController {
                 }
                 break;
             }
+			*/
             case "confirm": {
                 ConfirmTemplate confirmTemplate = new ConfirmTemplate(
                         "Do it?",
@@ -293,14 +302,14 @@ public class KitchenSinkController {
                 this.reply(replyToken, templateMessage);
                 break;
             }
-            case "buttons": {
+            case "/setting": {
                 String imageUrl = createUri("/static/buttons/1040.jpg");
                 ButtonsTemplate buttonsTemplate = new ButtonsTemplate(
-                        imageUrl,
-                        "My button sample",
+                        //imageUrl,
+                        "設定",
                         "Hello, my button",
                         Arrays.asList(
-                                new URIAction("Go to line.me",
+                                /*new URIAction("Go to line.me",
                                               "https://line.me"),
                                 new PostbackAction("Say hello1",
                                                    "hello こんにちは"),
@@ -308,7 +317,16 @@ public class KitchenSinkController {
                                                    "hello こんにちは",
                                                    "hello こんにちは"),
                                 new MessageAction("Say message",
-                                                  "Rice=米")
+                                                  "Rice=米")*/
+                        		if (lan) {
+                        			new MessageAction(language[0][0], "語言"),
+                        			new MessageAction(language[0][1], "運動習慣"),
+                        			new MessageAction(language[0][2], "運動目標")
+                        		} else {
+                        			new MessageAction(language[1][0], "Language"),
+                        			new MessageAction(language[1][1], "Habit of Exercise"),
+                        			new MessageAction(language[1][2], "Goal of Exercise")
+                        		}
                         ));
                 TemplateMessage templateMessage = new TemplateMessage("Button alt text", buttonsTemplate);
                 this.reply(replyToken, templateMessage);
