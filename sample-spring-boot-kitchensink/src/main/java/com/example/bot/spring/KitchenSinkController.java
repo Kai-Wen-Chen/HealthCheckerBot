@@ -87,11 +87,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @LineMessageHandler
 public class KitchenSinkController {
-	String[] chinese = ["語言", "運動習慣", "運動目標"];
-	String[] english = ["Language", "Habit of Exercise", "Goal of Exercise"];
-	ArrayList<String[]> language = new ArrayList<String[]>();
-	language.add(chinese);
-	language.add(english);
+	
 	boolean lan = true;
 	
     @Autowired
@@ -307,7 +303,7 @@ public class KitchenSinkController {
                 ButtonsTemplate buttonsTemplate = new ButtonsTemplate(
                         //imageUrl,
                         "設定",
-                        "Hello, my button",
+                        "",
                         Arrays.asList(
                                 /*new URIAction("Go to line.me",
                                               "https://line.me"),
@@ -319,13 +315,13 @@ public class KitchenSinkController {
                                 new MessageAction("Say message",
                                                   "Rice=米")*/
                         		if (lan) {
-                        			new MessageAction(language[0][0], "語言"),
-                        			new MessageAction(language[0][1], "運動習慣"),
-                        			new MessageAction(language[0][2], "運動目標")
+                        			new MessageAction("語言", "語言"),
+                        			new MessageAction("運動習慣", "運動習慣"),
+                        			new MessageAction("運動目標", "運動目標")
                         		} else {
-                        			new MessageAction(language[1][0], "Language"),
-                        			new MessageAction(language[1][1], "Habit of Exercise"),
-                        			new MessageAction(language[1][2], "Goal of Exercise")
+                        			new MessageAction("Language", "Language"),
+                        			new MessageAction("Habit of Exercise", "Habit of Exercise"),
+                        			new MessageAction("Goal of Exercise", "Goal of Exercise")
                         		}
                         ));
                 TemplateMessage templateMessage = new TemplateMessage("Button alt text", buttonsTemplate);
