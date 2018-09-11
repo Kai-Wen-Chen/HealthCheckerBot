@@ -314,15 +314,9 @@ public class KitchenSinkController {
                                                    "hello こんにちは"),
                                 new MessageAction("Say message",
                                                   "Rice=米")*/
-                        		if (lan) {
-                        			new MessageAction("語言", "語言"),
-                        			new MessageAction("運動習慣", "運動習慣"),
-                        			new MessageAction("運動目標", "運動目標")
-                        		} else {
-                        			new MessageAction("Language", "Language"),
-                        			new MessageAction("Habit of Exercise", "Habit of Exercise"),
-                        			new MessageAction("Goal of Exercise", "Goal of Exercise")
-                        		}
+                        		new MessageAction("語言", "語言"),
+                        		new MessageAction("運動習慣", "運動習慣"),
+                        		new MessageAction("運動目標", "運動目標")
                         ));
                 TemplateMessage templateMessage = new TemplateMessage("Button alt text", buttonsTemplate);
                 this.reply(replyToken, templateMessage);
