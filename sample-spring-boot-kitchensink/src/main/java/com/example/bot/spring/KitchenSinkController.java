@@ -312,7 +312,8 @@ public class KitchenSinkController {
                 break;
             }
             case "carousel": {
-                String imageUrl = createUri("/static/buttons/logo1040.jpg");
+                String imageUrl_clock = createUri("/static/buttons/ic_clock_48_2.png");
+                String imageUrl_step = createUri("/static/buttons/ic_exercise_48_2.png");
                 CarouselTemplate carouselTemplate = new CarouselTemplate(
                         Arrays.asList(
                                 new CarouselColumn(imageUrl, "時間", "0.75 / 1 hr", Arrays.asList(
