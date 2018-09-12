@@ -312,26 +312,24 @@ public class KitchenSinkController {
                 break;
             }
             case "carousel": {
-                String imageUrl = createUri("/static/buttons/1040.jpg");
+                String imageUrl = createUri("/static/buttons/logo1040.jpg");
                 CarouselTemplate carouselTemplate = new CarouselTemplate(
                         Arrays.asList(
-                                new CarouselColumn(imageUrl, "hoge", "fuga", Arrays.asList(
-                                        new URIAction("Go to line.me",
-                                                      "https://line.me"),
-                                        new URIAction("Go to line.me",
-                                                      "https://line.me"),
-                                        new PostbackAction("Say hello1",
-                                                           "hello こんにちは")
+                                new CarouselColumn(imageUrl, "時間", "0.75 / 1 hr", Arrays.asList(
+                                        new PostbackAction("輸入當前運動時間",
+                                                      "輸入時間"),
+                                        new PostbackAction("輸入目標運動時間",
+                                                      "輸入目標時間"),
+                                        new PostbackAction("重設",
+                                                           "重設")
                                 )),
-                                new CarouselColumn(imageUrl, "hoge", "fuga", Arrays.asList(
-                                        new PostbackAction("言 hello2",
-                                                           "hello こんにちは",
-                                                           "hello こんにちは"),
-                                        new PostbackAction("言 hello2",
-                                                           "hello こんにちは",
-                                                           "hello こんにちは"),
-                                        new MessageAction("Say message",
-                                                          "Rice=米")
+                                new CarouselColumn(imageUrl, "步數", "3221 / 10000 steps", Arrays.asList(
+                                        new PostbackAction("輸入當前步數",
+                                                           "輸入當前步數"),
+                                        new PostbackAction("輸入目標步數",
+                                                           "輸入目標步數"),
+                                        new PostbackAction("重設",
+                                                          "重設")
                                 )),
                                 new CarouselColumn(imageUrl, "Datetime Picker",
                                                    "Please select a date, time or datetime", Arrays.asList(
