@@ -258,10 +258,11 @@ public class KitchenSinkController {
 
                                 this.reply(
                                         replyToken,
-                                        Arrays.asList(new TextMessage(
-                                                              "Display name: " + profile.getDisplayName()),
+                                        Arrays.asList(new TextMessage(profile.getDisplayName() + " 您好!!"),
                                                       new TextMessage("Status message: "
-                                                                      + profile.getStatusMessage()))
+                                                                      + profile.getStatusMessage()),
+                                                      new TextMessage("您今天的運動進度: " + "繼續努力!!!"),
+                                                      new TextMessage("您今天的飲食建議: " + "油炸類食物盡量少吃喔"))
                                 );
 
                             });
@@ -304,17 +305,17 @@ public class KitchenSinkController {
                                               "語言"),
                                 new MessageAction("運動習慣",
                                                    "運動習慣"),
-                                new MessageAction("運動目標",
-                                                  "運動目標")
+                                new MessageAction("關於HealthChecker",
+                                                  "關於HealthChecker")
                         ));
                 TemplateMessage templateMessage = new TemplateMessage("Button alt text", buttonsTemplate);
                 this.reply(replyToken, templateMessage);
                 break;
             }
-            case "carousel": {
+            case "/exercise": {
                 String imageUrl = createUri("/static/buttons/logo1040.jpg");
                 String imageUrlClock = createUri("/static/buttons/clock.jpg");
-                String imageUrlStep = createUri("/static/buttons/logo1040.jpg");
+                String imageUrlStep = createUri("/static/buttons/jogging.jpg");
                 CarouselTemplate carouselTemplate = new CarouselTemplate(
                         Arrays.asList(
                                 new CarouselColumn(imageUrlClock, "時間", "0.75 / 1 hr", Arrays.asList(
@@ -330,6 +331,22 @@ public class KitchenSinkController {
                                                            "輸入當前步數"),
                                         new PostbackAction("輸入目標步數",
                                                            "輸入目標步數"),
+                                        new PostbackAction("重設",
+                                                          "重設")
+                                )),
+                                new CarouselColumn(imageUrl, "熱量", "524 / 1000 kcal", Arrays.asList(
+                                        new PostbackAction("輸入當前熱量",
+                                                           "輸入當前熱量"),
+                                        new PostbackAction("輸入目標熱量",
+                                                           "輸入目標熱量"),
+                                        new PostbackAction("重設",
+                                                          "重設")
+                                )),
+                                new CarouselColumn(imageUrl, "距離", "1.2 / 3 km", Arrays.asList(
+                                        new PostbackAction("輸入當前距離",
+                                                           "輸入當前距離"),
+                                        new PostbackAction("輸入目標距離",
+                                                           "輸入目標距離"),
                                         new PostbackAction("重設",
                                                           "重設")
                                 )),
