@@ -312,11 +312,12 @@ public class KitchenSinkController {
                 break;
             }
             case "carousel": {
-                String imageUrl_clock = createUri("/static/buttons/ic_clock_48_2.png");
+            	String imageUrl = createUri("/static/buttons/logo1040.jpg");
+            	String imageUrl_clock = createUri("/static/buttons/ic_clock_48_2.png");
                 String imageUrl_step = createUri("/static/buttons/ic_exercise_48_2.png");
                 CarouselTemplate carouselTemplate = new CarouselTemplate(
                         Arrays.asList(
-                                new CarouselColumn(imageUrl, "時間", "0.75 / 1 hr", Arrays.asList(
+                                new CarouselColumn(imageUrl_clock, "時間", "0.75 / 1 hr", Arrays.asList(
                                         new PostbackAction("輸入當前運動時間",
                                                       "輸入時間"),
                                         new PostbackAction("輸入目標運動時間",
@@ -324,7 +325,7 @@ public class KitchenSinkController {
                                         new PostbackAction("重設",
                                                            "重設")
                                 )),
-                                new CarouselColumn(imageUrl, "步數", "3221 / 10000 steps", Arrays.asList(
+                                new CarouselColumn(imageUrl_step, "步數", "3221 / 10000 steps", Arrays.asList(
                                         new PostbackAction("輸入當前步數",
                                                            "輸入當前步數"),
                                         new PostbackAction("輸入目標步數",
