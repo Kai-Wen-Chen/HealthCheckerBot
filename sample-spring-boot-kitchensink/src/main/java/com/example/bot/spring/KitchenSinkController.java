@@ -447,8 +447,8 @@ public class KitchenSinkController {
             case "/food":
                 ConfirmTemplate confirmTemplate = new ConfirmTemplate(
                         "上傳照片",
-                        new CameraAction.withLabel("相機拍照"),
-                        new CameraRollAction.withLabel("相簿上傳")
+                        CameraAction.withLabel("相機拍照"),
+                        CameraRollAction.withLabel("相簿上傳")
                 );
                 TemplateMessage templateMessage = new TemplateMessage("Confirm alt text", confirmTemplate);
                 this.reply(replyToken, templateMessage);
