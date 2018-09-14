@@ -286,7 +286,7 @@ public class KitchenSinkController {
             }
             case "/language": {
                 ConfirmTemplate confirmTemplate = new ConfirmTemplate(
-                        "切換語言",
+                        "切換語言 (Language Switch)",
                         new MessageAction("中文", "切換至中文"),
                         new MessageAction("English", "Switch to English")
                 );
@@ -441,6 +441,15 @@ public class KitchenSinkController {
                 this.reply(replyToken, new MessageWithQuickReplySupplier().get());
                 break;
             case "/about":
+                break;
+            case "/food":
+                ConfirmTemplate confirmTemplate = new ConfirmTemplate(
+                        "上傳照片",
+                        new CameraAction("相機拍照", "from camera"),
+                        new CameraRollAction("相簿上傳", "from camera roll")
+                );
+                TemplateMessage templateMessage = new TemplateMessage("Confirm alt text", confirmTemplate);
+                this.reply(replyToken, templateMessage);
                 break;
             default:
                 log.info("Returns echo message {}: {}", replyToken, text);
