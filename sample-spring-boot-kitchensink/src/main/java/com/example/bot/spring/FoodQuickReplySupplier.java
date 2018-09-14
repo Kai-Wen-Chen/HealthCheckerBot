@@ -39,7 +39,7 @@ public class FoodQuickReplySupplier implements Supplier<Message> {
                               .build(),
                 QuickReplyItem.builder()
                               .action(CameraRollAction.withLabel("相簿上傳"))
-                              .build(),
+                              .build()
         );
 
         final QuickReply quickReply = QuickReply.items(items);
