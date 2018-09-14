@@ -316,6 +316,8 @@ public class KitchenSinkController {
                 String imageUrl = createUri("/static/buttons/logo1040.jpg");
                 String imageUrlClock = createUri("/static/buttons/clock.jpg");
                 String imageUrlStep = createUri("/static/buttons/jogging.jpg");
+                String imageUrlBurn = createUri("/static/buttons/burn.jpg");
+                String imageUrlDist = createUri("/static/buttons/court.jpg");
                 CarouselTemplate carouselTemplate = new CarouselTemplate(
                         Arrays.asList(
                                 new CarouselColumn(imageUrlClock, "時間", "0.75 / 1 hr", Arrays.asList(
@@ -334,7 +336,7 @@ public class KitchenSinkController {
                                         new PostbackAction("重設",
                                                           "重設")
                                 )),
-                                new CarouselColumn(imageUrl, "熱量", "524 / 1000 kcal", Arrays.asList(
+                                new CarouselColumn(imageUrlBurn, "熱量", "524 / 1000 kcal", Arrays.asList(
                                         new PostbackAction("輸入當前熱量",
                                                            "輸入當前熱量"),
                                         new PostbackAction("輸入目標熱量",
@@ -342,7 +344,7 @@ public class KitchenSinkController {
                                         new PostbackAction("重設",
                                                           "重設")
                                 )),
-                                new CarouselColumn(imageUrl, "距離", "1.2 / 3 km", Arrays.asList(
+                                new CarouselColumn(imageUrlDist, "距離", "1.2 / 3 km", Arrays.asList(
                                         new PostbackAction("輸入當前距離",
                                                            "輸入當前距離"),
                                         new PostbackAction("輸入目標距離",
@@ -437,6 +439,8 @@ public class KitchenSinkController {
                 break;
             case "quickreply":
                 this.reply(replyToken, new MessageWithQuickReplySupplier().get());
+                break;
+            case "/about":
                 break;
             default:
                 log.info("Returns echo message {}: {}", replyToken, text);
