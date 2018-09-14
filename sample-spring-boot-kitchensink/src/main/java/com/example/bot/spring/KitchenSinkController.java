@@ -284,11 +284,11 @@ public class KitchenSinkController {
                 }
                 break;
             }
-            case "confirm": {
+            case "/language": {
                 ConfirmTemplate confirmTemplate = new ConfirmTemplate(
-                        "Do it?",
-                        new MessageAction("Yes", "Yes!"),
-                        new MessageAction("No", "No!")
+                        "切換語言",
+                        new MessageAction("中文", "切換至中文"),
+                        new MessageAction("English", "Switch to English")
                 );
                 TemplateMessage templateMessage = new TemplateMessage("Confirm alt text", confirmTemplate);
                 this.reply(replyToken, templateMessage);
@@ -302,11 +302,11 @@ public class KitchenSinkController {
                         "settings",
                         Arrays.asList(
                                 new MessageAction("語言",
-                                              "語言"),
+                                              "/language"),
                                 new MessageAction("運動習慣",
                                                    "運動習慣"),
                                 new MessageAction("關於HealthChecker",
-                                                  "關於HealthChecker")
+                                                  "/about")
                         ));
                 TemplateMessage templateMessage = new TemplateMessage("Button alt text", buttonsTemplate);
                 this.reply(replyToken, templateMessage);
