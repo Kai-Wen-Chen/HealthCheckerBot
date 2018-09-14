@@ -37,8 +37,6 @@ import com.google.common.io.ByteStreams;
 import com.linecorp.bot.client.LineMessagingClient;
 import com.linecorp.bot.client.MessageContentResponse;
 import com.linecorp.bot.model.ReplyMessage;
-import com.linecorp.bot.model.action.CameraAction;
-import com.linecorp.bot.model.action.CameraRollAction;
 import com.linecorp.bot.model.action.DatetimePickerAction;
 import com.linecorp.bot.model.action.MessageAction;
 import com.linecorp.bot.model.action.PostbackAction;
@@ -439,19 +437,10 @@ public class KitchenSinkController {
             case "flex":
                 this.reply(replyToken, new ExampleFlexMessageSupplier().get());
                 break;
-            case "quickreply":
-                this.reply(replyToken, new MessageWithQuickReplySupplier().get());
+            case "/food":
+                this.reply(replyToken, new FoodQuickReplySupplier().get());
                 break;
             case "/about":
-                break;
-            case "/food":
-                ConfirmTemplate confirmTemplate = new ConfirmTemplate(
-                        "上傳照片",
-                        CameraAction.withLabel("相機拍照"),
-                        CameraRollAction.withLabel("相簿上傳")
-                );
-                TemplateMessage templateMessage = new TemplateMessage("Confirm alt text", confirmTemplate);
-                this.reply(replyToken, templateMessage);
                 break;
             default:
                 log.info("Returns echo message {}: {}", replyToken, text);
