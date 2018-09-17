@@ -468,11 +468,11 @@ public class KitchenSinkController {
                 break;
         }
     }
-    
+
     private void handlePostbackContent(String replyToken, PostbackEvent event, String content)
             throws Exception {
         String text = content;
-    
+
         switch (text) {
             case "/today_record": {
                 String imageUrl = createUri("/static/buttons/logo1040.jpg");
@@ -497,13 +497,13 @@ public class KitchenSinkController {
                                         new PostbackAction("> 02:00",
                                                           "/more2hr"),
                                         new PostbackAction("新增", "/add_exercise")
-                                ))                                
+                                ))
                         ));
                 TemplateMessage templateMessage = new TemplateMessage("Carousel alt text", carouselTemplate);
                 this.reply(replyToken, templateMessage);
                 break;
             }
-            
+
             default:
                 this.replyText(replyToken,
                         "Got postback data " + event.getPostbackContent().getData() + ", param " + event
