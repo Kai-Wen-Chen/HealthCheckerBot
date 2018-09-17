@@ -469,7 +469,7 @@ public class KitchenSinkController {
         }
     }
     
-    private void handlePostbackContent(String replyToken, Event event, String content) throws Exception {
+    private void handlePostbackContent(String replyToken, PostbackEvent event, String content) throws Exception {
         String text = content;
     
         switch (text) {
@@ -496,8 +496,7 @@ public class KitchenSinkController {
                                         new PostbackAction("> 02:00",
                                                           "/more2hr"),
                                         new PostbackAction("新增", "/add_exercise")
-                                )),
-                                
+                                ))                                
                         ));
                 TemplateMessage templateMessage = new TemplateMessage("Carousel alt text", carouselTemplate);
                 this.reply(replyToken, templateMessage);
@@ -505,11 +504,9 @@ public class KitchenSinkController {
             }
             
             default:
-                log.info("Returns echo message {}: {}", replyToken, text);
-                this.replyText(
-                        replyToken,
-                        text
-                );
+                this.replyText(replyToken,
+                        "Got postback data " + event.getPostbackContent().getData() + ", param " + event
+                                .getPostbackContent().getParams().toString());
                 break;
         }
     }
