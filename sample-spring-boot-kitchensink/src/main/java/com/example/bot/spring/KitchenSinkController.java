@@ -469,7 +469,8 @@ public class KitchenSinkController {
         }
     }
     
-    private void handlePostbackContent(String replyToken, PostbackEvent event, String content) throws Exception {
+    private void handlePostbackContent(String replyToken, PostbackEvent event, String content)
+            throws Exception {
         String text = content;
     
         switch (text) {
