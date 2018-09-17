@@ -492,7 +492,21 @@ public class KitchenSinkController {
                 this.reply(replyToken, templateMessage);
                 break;
             }
-
+            case "/today_exercise": {
+                String imageUrl = createUri("/static/buttons/logo1040.jpg");
+                ButtonsTemplate buttonsTemplate = new ButtonsTemplate(
+                        imageUrl,
+                        "今日運動",
+                        "請選擇時間長度",
+                        Arrays.asList(
+                                new PostbackAction("小於30分鐘", "/less30min"),
+                                new PostbackAction("介於30分鐘至2小時", "/30minto2hr"),
+                                new PostbackAction("大於2小時", "/more2hr")
+                        ));
+                TemplateMessage templateMessage = new TemplateMessage("Buttons alt text", buttonsTemplate);
+                this.reply(replyToken, templateMessage);
+                break;
+            }
             default:
                 this.replyText(replyToken,
                         "Got postback data " + event.getPostbackContent().getData() + ", param " + event
