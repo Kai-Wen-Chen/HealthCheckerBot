@@ -320,9 +320,10 @@ public class KitchenSinkController {
                         "飲食與運動紀錄",
                         "records",
                         Arrays.asList(
-                                new PostbackAction("今日紀錄",
-                                              "/today_record",
-                                              "今日吃了什麼"),
+                                new PostbackAction("今日飲食",
+                                              "/today_food"),
+                                new PostbackAction("今日運動",
+                                        "/today_exercise"),
                                 new URIAction("詳細紀錄(網站觀看)",
                                                   "http://140.114.88.144/mhealth_web/")
                         ));
@@ -475,32 +476,19 @@ public class KitchenSinkController {
         String text = content;
 
         switch (text) {
-            case "/today_record": {
+            case "/today_food": {
                 String imageUrl = createUri("/static/buttons/logo1040.jpg");
-                CarouselTemplate carouselTemplate = new CarouselTemplate(
+                ButtonsTemplate buttonsTemplate = new ButtonsTemplate(
+                        imageUrl,
+                        "今日飲食",
+                        "請選擇時段",
                         Arrays.asList(
-                                new CarouselColumn(imageUrl, "飲食", "請選擇時段", Arrays.asList(
-                                        new PostbackAction("早餐",
-                                                      "/breakfast"),
-                                        new PostbackAction("午餐",
-                                                      "/lunch"),
-                                        new PostbackAction("晚餐",
-                                                           "/dinner"),
-                                        new PostbackAction("消夜或點心",
-                                                      "/snack"),
-                                        new PostbackAction("新增", "/add_food")
-                                )),
-                                new CarouselColumn(imageUrl, "運動", "請選擇持續時間", Arrays.asList(
-                                        new PostbackAction("< 00:30",
-                                                           "/less30"),
-                                        new PostbackAction("00:30 ~ 02:00",
-                                                           "/30to2hr"),
-                                        new PostbackAction("> 02:00",
-                                                          "/more2hr"),
-                                        new PostbackAction("新增", "/add_exercise")
-                                ))
+                                new PostbackAction("早餐", "/breakfast"),
+                                new PostbackAction("午餐", "/lunch"),
+                                new PostbackAction("晚餐", "/dinner"),
+                                new PostbackAction("消夜或點心", "/snack")
                         ));
-                TemplateMessage templateMessage = new TemplateMessage("Carousel alt text", carouselTemplate);
+                TemplateMessage templateMessage = new TemplateMessage("Buttons alt text", buttonsTemplate);
                 this.reply(replyToken, templateMessage);
                 break;
             }
