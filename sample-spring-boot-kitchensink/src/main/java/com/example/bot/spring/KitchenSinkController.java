@@ -312,7 +312,7 @@ public class KitchenSinkController {
                 this.reply(replyToken, templateMessage);
                 break;
             }
-            case "/records": {
+            case "/diet_sport": {
                 String imageUrl = createUri("/static/buttons/logo1040.jpg");
                 ButtonsTemplate buttonsTemplate = new ButtonsTemplate(
                         imageUrl,
