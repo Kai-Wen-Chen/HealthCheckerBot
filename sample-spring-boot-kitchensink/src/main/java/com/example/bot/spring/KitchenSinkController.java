@@ -312,6 +312,22 @@ public class KitchenSinkController {
                 this.reply(replyToken, templateMessage);
                 break;
             }
+            case "/record": {
+                String imageUrl = createUri("/static/buttons/logo1040.jpg");
+                ButtonsTemplate buttonsTemplate = new ButtonsTemplate(
+                        imageUrl,
+                        "飲食與運動紀錄",
+                        "records",
+                        Arrays.asList(
+                                new MessageAction("今日紀錄",
+                                              "/today_record"),
+                                new URIAction("詳細紀錄(網站觀看)",
+                                                  "140.114.88.144")
+                        ));
+                TemplateMessage templateMessage = new TemplateMessage("Button alt text", buttonsTemplate);
+                this.reply(replyToken, templateMessage);
+                break;
+            }
             case "/exercise": {
                 String imageUrl = createUri("/static/buttons/logo1040.jpg");
                 String imageUrlClock = createUri("/static/buttons/clock.jpg");
