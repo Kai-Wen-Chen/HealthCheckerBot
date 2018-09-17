@@ -321,7 +321,8 @@ public class KitchenSinkController {
                         "records",
                         Arrays.asList(
                                 new PostbackAction("今日紀錄",
-                                              "/today_record"),
+                                              "/today_record",
+                                              "今日吃了什麼"),
                                 new URIAction("詳細紀錄(網站觀看)",
                                                   "http://140.114.88.144/mhealth_web/")
                         ));
