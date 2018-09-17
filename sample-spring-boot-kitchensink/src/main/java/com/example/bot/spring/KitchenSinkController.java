@@ -285,16 +285,6 @@ public class KitchenSinkController {
                 }
                 break;
             }
-            case "/language": {
-                ConfirmTemplate confirmTemplate = new ConfirmTemplate(
-                        "切換語言 (Language Switch)",
-                        new MessageAction("中文", "切換至中文"),
-                        new MessageAction("English", "Switch to English")
-                );
-                TemplateMessage templateMessage = new TemplateMessage("Confirm alt text", confirmTemplate);
-                this.reply(replyToken, templateMessage);
-                break;
-            }
             case "/settings": {
                 String imageUrl = createUri("/static/buttons/logo1040.jpg");
                 ButtonsTemplate buttonsTemplate = new ButtonsTemplate(
@@ -302,10 +292,10 @@ public class KitchenSinkController {
                         "設定",
                         "settings",
                         Arrays.asList(
-                                new MessageAction("語言",
+                                new PostbackAction("語言",
                                               "/language"),
-                                new MessageAction("運動習慣",
-                                                   "運動習慣"),
+                                new PostbackAction("運動習慣",
+                                                   "/habit"),
                                 new MessageAction("關於HealthChecker",
                                                   "/about")
                         ));
@@ -504,6 +494,16 @@ public class KitchenSinkController {
                                 new PostbackAction("大於2小時", "/more2hr")
                         ));
                 TemplateMessage templateMessage = new TemplateMessage("Buttons alt text", buttonsTemplate);
+                this.reply(replyToken, templateMessage);
+                break;
+            }
+            case "/language": {
+                ConfirmTemplate confirmTemplate = new ConfirmTemplate(
+                        "切換語言 (Language Switch)",
+                        new MessageAction("中文", "切換至中文"),
+                        new MessageAction("English", "Switch to English")
+                );
+                TemplateMessage templateMessage = new TemplateMessage("Confirm alt text", confirmTemplate);
                 this.reply(replyToken, templateMessage);
                 break;
             }
