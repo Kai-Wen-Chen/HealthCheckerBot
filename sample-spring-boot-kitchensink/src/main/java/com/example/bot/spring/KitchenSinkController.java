@@ -321,7 +321,7 @@ public class KitchenSinkController {
                         Arrays.asList(
                                 new MessageAction("今日紀錄",
                                               "/today_record"),
-                                new URIAction("詳細紀錄(網站觀看)",
+                                new MessageAction("詳細紀錄(網站觀看)",
                                                   "140.114.88.144")
                         ));
                 TemplateMessage templateMessage = new TemplateMessage("Button alt text", buttonsTemplate);
