@@ -87,7 +87,21 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @LineMessageHandler
 public class KitchenSinkController {
-    @Autowired
+    /**
+     * Language flag
+     */
+	private short lang = 0;
+	/**
+     * Text of home
+     */
+	private String[] homeChi = {" 您好!!", "您今天的運動進度: ", "您今天的飲食建議: "};
+    private String[] homeEng = {" Hello!!",
+            "Today's progress of exercise: ", "Today's suggestions of diet: "};
+    private ArrayList<String[]> homeText = new ArrayList();
+    homeText.add(homeChi);
+    homeText.add(homeEng);
+
+	@Autowired
     private LineMessagingClient lineMessagingClient;
 
     @EventMapping
@@ -259,11 +273,10 @@ public class KitchenSinkController {
 
                                 this.reply(
                                         replyToken,
-                                        Arrays.asList(new TextMessage(profile.getDisplayName() + " 您好!!"),
-                                                      new TextMessage("Status message: "
-                                                                      + profile.getStatusMessage()),
-                                                      new TextMessage("您今天的運動進度: " + "繼續努力!!!"),
-                                                      new TextMessage("您今天的飲食建議: " + "油炸類食物盡量少吃喔"))
+                                        Arrays.asList(new TextMessage(profile.getDisplayName() +
+                                                homeText[lang][0]),
+                                                      new TextMessage(homeText[lang][1] + "繼續努力!!!"),
+                                                      new TextMessage(homeText[lang][2] + "油炸類食物盡量少吃喔"))
                                 );
 
                             });
@@ -500,11 +513,21 @@ public class KitchenSinkController {
             case "/language": {
                 ConfirmTemplate confirmTemplate = new ConfirmTemplate(
                         "切換語言 (Language Switch)",
-                        new MessageAction("中文", "切換至中文"),
-                        new MessageAction("English", "Switch to English")
+                        new PostbackAction("中文", "/chinese"),
+                        new PostbackAction("English", "/english")
                 );
                 TemplateMessage templateMessage = new TemplateMessage("Confirm alt text", confirmTemplate);
                 this.reply(replyToken, templateMessage);
+                break;
+            }
+            case "/chinese": {
+                lang = 0;
+                this.reply(replyToken, "切換至中文");
+                break;
+            }
+            case "/english": {
+                lang = 1;
+                this.reply(replyToken, "Switch to English");
                 break;
             }
             default:
