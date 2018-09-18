@@ -88,13 +88,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @LineMessageHandler
 public class KitchenSinkController {
-    /**
-     * Language flag
-     */
 	private short lang = 0;
-	/**
-     * Text of home
-     */
 	private String[] homeChi = {" 您好!!", "您今天的運動進度: ", "您今天的飲食建議: "};
     private String[] homeEng = {" Hello!!",
             "Today's progress of exercise: ", "Today's suggestions of diet: "};
@@ -275,8 +269,8 @@ public class KitchenSinkController {
 
                                 this.reply(
                                         replyToken,
-                                        Arrays.asList(new TextMessage(profile.getDisplayName() +
-                                                homeText.get(lang)[0]),
+                                        Arrays.asList(new TextMessage(profile.getDisplayName()
+                                                + homeText.get(lang)[0]),
                                                       new TextMessage(homeText.get(lang)[1] + "繼續努力!!!"),
                                                       new TextMessage(homeText.get(lang)[2] + "油炸類食物盡量少吃喔"))
                                 );
