@@ -29,13 +29,16 @@ import com.linecorp.bot.model.message.quickreply.QuickReplyItem;
 
 public class FoodQuickReplySupplier implements Supplier<Message> {
     @Override
-    public Message get() {
+    public Message get(short lang) {
+        final String[] cameraText = {"相機拍攝", "Take a photo"};
+        final String[] cameraRollText = {"相簿上傳", "Upload from album"};
+        final String[] response = {"請上傳食物的照片", "Please upload the photo of food"};
         final List<QuickReplyItem> items = Arrays.<QuickReplyItem>asList(
                 QuickReplyItem.builder()
-                              .action(CameraAction.withLabel("相機拍攝"))
+                              .action(CameraAction.withLabel(cameraText[lang]))
                               .build(),
                 QuickReplyItem.builder()
-                              .action(CameraRollAction.withLabel("相簿上傳"))
+                              .action(CameraRollAction.withLabel(cameraRollText[lang]))
                               .build()
         );
 
@@ -43,7 +46,7 @@ public class FoodQuickReplySupplier implements Supplier<Message> {
 
         return TextMessage
                 .builder()
-                .text("Message with QuickReply")
+                .text(response[lang])
                 .quickReply(quickReply)
                 .build();
     }

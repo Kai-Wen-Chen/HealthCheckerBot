@@ -92,7 +92,6 @@ public class KitchenSinkController {
     private String[] homeChi = {" 您好!!", "您今天的運動進度: ", "您今天的飲食建議: "};
     private String[] homeEng = {" Hello!!",
             "Today's progress of exercise: ", "Today's suggestions of diet: "};
-
     @Autowired
     private LineMessagingClient lineMessagingClient;
 
@@ -456,7 +455,7 @@ public class KitchenSinkController {
                 this.reply(replyToken, new ExampleFlexMessageSupplier().get());
                 break;
             case "/food":
-                this.reply(replyToken, new FoodQuickReplySupplier().get());
+                this.reply(replyToken, new FoodQuickReplySupplier().get(lang));
                 break;
             case "/about":
                 break;
