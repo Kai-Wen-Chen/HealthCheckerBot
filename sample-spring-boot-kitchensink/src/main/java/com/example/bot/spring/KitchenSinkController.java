@@ -22,6 +22,7 @@ import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -97,8 +98,12 @@ public class KitchenSinkController {
 	private String[] homeChi = {" 您好!!", "您今天的運動進度: ", "您今天的飲食建議: "};
     private String[] homeEng = {" Hello!!",
             "Today's progress of exercise: ", "Today's suggestions of diet: "};
-    private ArrayList<String[]> homeText = new ArrayList<String[]>(
-            Arrays.asList(homeChi, homeEng));
+    private ArrayList<String[]> homeText = new ArrayList<String[]>();
+
+    public KithchenSinkController() {
+        homeText.add(homeChi);
+        homeText.add(homeEng);
+    }
 
 	@Autowired
     private LineMessagingClient lineMessagingClient;
