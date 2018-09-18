@@ -98,12 +98,6 @@ public class KitchenSinkController {
 	private String[] homeChi = {" 您好!!", "您今天的運動進度: ", "您今天的飲食建議: "};
     private String[] homeEng = {" Hello!!",
             "Today's progress of exercise: ", "Today's suggestions of diet: "};
-    private ArrayList<String[]> homeText = new ArrayList<String[]>();
-
-    public KithchenSinkController() {
-        homeText.add(homeChi);
-        homeText.add(homeEng);
-    }
 
 	@Autowired
     private LineMessagingClient lineMessagingClient;
@@ -266,6 +260,10 @@ public class KitchenSinkController {
         switch (text) {
             case "/home": {
                 String userId = event.getSource().getUserId();
+                ArrayList<String[]> homeText = new ArrayList<String[]>();
+                homeText.add(homeChi);
+                homeText.add(homeEng);
+
                 if (userId != null) {
                     lineMessagingClient
                             .getProfile(userId)
