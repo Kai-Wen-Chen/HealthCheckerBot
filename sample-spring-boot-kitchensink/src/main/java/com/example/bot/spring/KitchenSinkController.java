@@ -97,9 +97,8 @@ public class KitchenSinkController {
 	private String[] homeChi = {" 您好!!", "您今天的運動進度: ", "您今天的飲食建議: "};
     private String[] homeEng = {" Hello!!",
             "Today's progress of exercise: ", "Today's suggestions of diet: "};
-    private ArrayList<String[]> homeText = new ArrayList();
-    homeText.add(homeChi);
-    homeText.add(homeEng);
+    private ArrayList<String[]> homeText = new ArrayList<String[]>(
+            Arrays.asList(homeChi, homeEng));
 
 	@Autowired
     private LineMessagingClient lineMessagingClient;
