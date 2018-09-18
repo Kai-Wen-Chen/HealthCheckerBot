@@ -276,9 +276,9 @@ public class KitchenSinkController {
                                 this.reply(
                                         replyToken,
                                         Arrays.asList(new TextMessage(profile.getDisplayName() +
-                                                homeText[lang][0]),
-                                                      new TextMessage(homeText[lang][1] + "繼續努力!!!"),
-                                                      new TextMessage(homeText[lang][2] + "油炸類食物盡量少吃喔"))
+                                                homeText.get(lang)[0]),
+                                                      new TextMessage(homeText.get(lang)[1] + "繼續努力!!!"),
+                                                      new TextMessage(homeText.get(lang)[2] + "油炸類食物盡量少吃喔"))
                                 );
 
                             });
@@ -524,12 +524,12 @@ public class KitchenSinkController {
             }
             case "/chinese": {
                 lang = 0;
-                this.reply(replyToken, "切換至中文");
+                this.replyText(replyToken, "切換至中文");
                 break;
             }
             case "/english": {
                 lang = 1;
-                this.reply(replyToken, "Switch to English");
+                this.replyText(replyToken, "Switch to English");
                 break;
             }
             default:
