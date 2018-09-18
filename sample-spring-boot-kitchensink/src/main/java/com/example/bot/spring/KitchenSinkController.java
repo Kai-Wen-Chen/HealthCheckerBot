@@ -88,12 +88,12 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @LineMessageHandler
 public class KitchenSinkController {
-	private short lang = 0;
-	private String[] homeChi = {" 您好!!", "您今天的運動進度: ", "您今天的飲食建議: "};
+    private short lang;
+    private String[] homeChi = {" 您好!!", "您今天的運動進度: ", "您今天的飲食建議: "};
     private String[] homeEng = {" Hello!!",
             "Today's progress of exercise: ", "Today's suggestions of diet: "};
 
-	@Autowired
+    @Autowired
     private LineMessagingClient lineMessagingClient;
 
     @EventMapping
